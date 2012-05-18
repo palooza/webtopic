@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package hbasedat.chunckcombiner;
+package hdfsdat.chunckcombiner;
 
 import java.util.*;
 import java.io.*;
 
-import hbasedat.luovendat.UrltoIndexBimap;
+import hdfsdat.luovendat.UrltoIndexBimap;
 
 /**
  * Write every URL in the chunck-edgelist in to a single unique URL file. The

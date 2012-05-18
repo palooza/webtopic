@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package hbasedat.chunckcombiner;
+package hdfsdat.chunckcombiner;
 
 import java.io.*;
 import java.util.*;
 
-import hbasedat.luovendat.UrltoIndexBimap;
+import hdfsdat.luovendat.UrltoIndexBimap;
 /*
  * Produce data file for hbase for loading. The format is: Rowid, info-family,
  * adj-family urlid(padded by 1,000,000,000) (Int), url:URL(String), adj-urlid
@@ -55,7 +55,7 @@ public class URLtabledat {
 
     public static void makeURLTabledat(UrltoIndexBimap univurlmap, File chunckurl, File edgelist, PrintWriter urltableout) throws IOException {
 
-        int padding = 1000000000;
+        int padding = 0;
         UrltoIndexBimap chunckidmap = new UrltoIndexBimap(chunckurl);
         
 

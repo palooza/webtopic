@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package hbasedat.chunckcombiner;
+package hdfsdat.chunckcombiner;
 
 import java.io.*;
 import java.util.*;
 
-import hbasedat.luovendat.UrltoIndexBimap;
+import hdfsdat.luovendat.UrltoIndexBimap;
 
 /**
  * Produce a data file for HBase for loading. The format is Rowid: cluster id.
@@ -23,7 +23,7 @@ public class ClusterTable {
             String baseChunckurl = "/media/netdisk/hoshun/webtopic/wb3/sortbychunck/01-2011-sorted-url-";
             String baseMember = "/media/netdisk/hoshun/webtopic/wb3/chunckcluster/%d.member";
             File univurl = new File("/media/netdisk/hoshun/webtopic/wb3/01-2011-all-connected-sorted-uniq-url");
-            File clustertabledat = new File("/media/netdisk/hoshun/webtopic/wb3/hbasedat/cluster-table.mysql.dat");
+            File clustertabledat = new File("/media/netdisk/hoshun/webtopic/wb3/hbasedat/cluster-table.hdfs.dat");
             
             PrintWriter clusterout = null;
             
@@ -55,7 +55,7 @@ public class ClusterTable {
      */
     public static int writeUnivCluster(UrltoIndexBimap univmap, File chunckurl, File memfile, PrintWriter clusterout, int firstClusterId) {
         int clusterId = firstClusterId;
-        int padding = 1000000000;
+        int padding = 0;
         try {
             UrltoIndexBimap chunckmap = new UrltoIndexBimap(chunckurl);
             
