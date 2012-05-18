@@ -15,8 +15,6 @@ import java.util.regex.Pattern;
 public class ContentFormat {
 
     public static void main(String[] args) {
-
-        // spade test
         
         String a = "Top/Arts/gogle";
         Matcher match = topicTwoHeirachyPattern.matcher(a);
