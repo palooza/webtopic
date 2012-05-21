@@ -63,6 +63,8 @@ public class HardClusterToMemberBimap {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        
+        System.out.println("Loaded the MakeHardClusterindexedUrlTable");
     }    
     
     public int getClusterId(int urlId){

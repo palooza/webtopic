@@ -9,7 +9,7 @@ import java.util.*;
 
 import dmoz.util.Category;
 /**
- *
+ * Count the number of docs in each category. 
  * @author hoshun
  */
 public class ProfileCategories {

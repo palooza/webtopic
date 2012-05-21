@@ -15,6 +15,10 @@ import dmoz.util.Category;
  */
 public class CategorizedURLs {
 
+    public static void main(String[] args) {
+        File indexedDmozUrl = new File("/media/netdisk/hoshun/webtopic/wb3/hdfsdat/dmoz-indexed-url");
+    }
+    
     public CategorizedURLs(File indexedDmozUrl) {
 
         idToCategory = new HashMap<Integer, Category>();

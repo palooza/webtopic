@@ -13,7 +13,7 @@ import java.io.*;
 public class MakeHardClusterIndexedUrlTable {
     
     public static void main(String[] args) {
-        String dir = "media/netdisk/hoshun/webtopic/wb3/hdfsdat/";
+        String dir = "/media/netdisk/hoshun/webtopic/wb3/hdfsdat/";
         File urlTableInfile = new File(dir + "url-table.hdfs.dat");
         File clusterTableInfile = new File(dir + "cluster-table.hdfs.dat");
         File urlAndClusterTableOutFile = new File(dir + "helper/initclusterId-url-table.dat");
