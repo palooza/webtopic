@@ -44,9 +44,14 @@ public class RecursiveClusterer {
                 if (newMemberSet.size() >= clusterMinSize) {// filter cluster that are too small
                     int curSize = newMemberSet.size();
 
-                    if (curSize > 0.9 * origSize) {
+                    if ( curSize > 0.95 * origSize) {
                         // don't break unbreakable clusters
-                        unbreakableClusters.add(newMemberSet);
+                        if(curSize < 1000){
+                            unbreakableClusters.add(newMemberSet);
+                        }else{
+                            // discared the graph because it is too large
+                            System.out.println("Discard cluster size: " + curSize);
+                        }
                     } else {
                         clusterHeap.add(new VerticeCollection(newMemberSet));
                     }
@@ -73,6 +78,11 @@ public class RecursiveClusterer {
     // using voltage clusterer to divide to cluster into 2 
     private Collection<Set<Integer>> _bicluster(Collection<Integer> vertices) {
         DirectedGraph<Integer, Integer> subgraph = FilterUtils.createInducedSubgraph(vertices, graph);
+        
+        if(subgraph.getEdgeCount() == 0 || subgraph.getVertexCount() == 0){
+            return new ArrayList<Set<Integer>>();
+        }
+        
         VoltageClusterer<Integer, Integer> vclusterer = new VoltageClusterer<Integer, Integer>(subgraph, 2);
         Collection<Set<Integer>> clusters = vclusterer.cluster(2);
         return clusters;

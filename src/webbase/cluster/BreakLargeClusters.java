@@ -20,7 +20,8 @@ import util.UrlToSpecifiedCategory;
 public class BreakLargeClusters {
 
     public static void main(String[] args) {
-        File clusteridUrlTableInfile = new File("/media/netdisk/hoshun/webtopic/wb3/hdfsdat/helper/filtered-cluster-url-table.dat");
+        File clusteridUrlTableInfile = 
+                new File("/media/netdisk/hoshun/webtopic/wb3/hdfsdat/helper/filtered-cluster-url-table.dat");
         File filteredClusterUrlTableOutfile = 
                 new File("/media/netdisk/hoshun/webtopic/wb3/hdfsdat/filtered-breaked-clusterid-url-table.hdfs.dat");
         File dmozeSpecifiedUrlInfile = new File("/media/netdisk/hoshun/webtopic/wb3/hdfsdat/dmoz-specified-url");
@@ -77,7 +78,10 @@ public class BreakLargeClusters {
                     }
 
                     DirectedGraph<Integer, Integer> graph = cluster.toDirectedInnerGraph();
-
+                    
+                    // remove hub page!
+                    removeHubPages(graph, 100);
+                            
                     // break the cluster and write the resulting clusters to the file
                     //value: Set<Set<Integer> clusters. recursive breaker(graph)
                     RecursiveClusterer recurClusterer = new RecursiveClusterer(graph, minClusterSize, maxClusterSize);
@@ -132,4 +136,17 @@ public class BreakLargeClusters {
         return clusters;
 
     }
+    
+    public static void removeHubPages(DirectedGraph<Integer,Integer> graph, int degThreshold){
+        Set<Integer> hubNodes = new TreeSet<Integer>();
+        for(Integer node : graph.getVertices()){
+            if(graph.degree(node) > degThreshold){
+                hubNodes.add(node);
+            }
+        }
+        for(Integer hubnode : hubNodes){
+            graph.removeVertex(hubnode);
+        }
+    }
+    
 }
