@@ -45,7 +45,7 @@ public class ClusterFilter {
                 in = new Scanner(new BufferedReader(new FileReader(clusterUrlTableInfile)));
                 out = new PrintWriter(filteredClusterUrlTableOutfile);
                 
-                CategorizedURLs urlToCategory = new CategorizedURLs(dmozIndexedUrlInfile);
+                CategorizedURLs urlToCategory = new CategorizedURLs(dmozIndexedUrlInfile, false);
                                 
                 String line = null;
                 if(in.hasNextLine()){

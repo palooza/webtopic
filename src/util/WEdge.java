@@ -11,7 +11,7 @@ import java.io.*;
  *
  * @author hoshun
  */
-public class WEdge {
+public class WEdge implements Comparable<WEdge>{
     
     public static void main(String[] args) {
        
@@ -31,6 +31,16 @@ public class WEdge {
     @Override
     public String toString() {
         return "E:" + id ;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.id == ((WEdge) obj).id;
+    }
+
+    @Override
+    public int compareTo(WEdge o) {
+        return ((Integer) this.id).compareTo(o.id);
     }
     
     public double getWeight() throws Exception{

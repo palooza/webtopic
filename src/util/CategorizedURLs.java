@@ -18,10 +18,13 @@ public class CategorizedURLs {
     public static void main(String[] args) {
         File indexedDmozUrl = new File("/media/netdisk/hoshun/webtopic/wb3/hdfsdat/dmoz-indexed-url");
     }
-    
-    public CategorizedURLs(File indexedDmozUrl) {
 
-        idToCategory = new HashMap<Integer, Category>();
+    public CategorizedURLs(File indexedDmozUrl, boolean isWithURL) {
+
+        idToCategory = new TreeMap<Integer, Category>();
+        if (isWithURL) {
+            idToUrl = new TreeMap<Integer, String>();
+        }
         try {
             Scanner in = null;
             try {
@@ -31,6 +34,9 @@ public class CategorizedURLs {
                     int id = Integer.parseInt(tokens[0]);
                     Category category = new Category(tokens[1], tokens[2]);
                     idToCategory.put(id, category);
+                    if (isWithURL) {
+                        idToUrl.put(id, tokens[3]);
+                    }
                 }
             } finally {
                 in.close();
@@ -41,9 +47,10 @@ public class CategorizedURLs {
     }
 
     /**
-     * Get the category associated with the id. 
+     * Get the category associated with the id.
+     *
      * @param id
-     * @return associated category or null if the id is not in the open 
+     * @return associated category or null if the id is not in the open
      * directory (dmoz).
      */
     public Category getCategory(int id) {
@@ -52,10 +59,10 @@ public class CategorizedURLs {
         }
         return null;
     }
-    
-    public boolean hasId(int id){
+
+    public boolean hasId(int id) {
         return idToCategory.containsKey(id);
     }
-    
-    private Map<Integer, Category> idToCategory;
+    public Map<Integer, Category> idToCategory;
+    public Map<Integer, String> idToUrl;
 }

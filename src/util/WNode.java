@@ -8,7 +8,7 @@ package util;
  *
  * @author hoshun
  */
-public class WNode {
+public class WNode implements Comparable<WNode>{
     
     public WNode(int id, String url){
         this.id = id;
@@ -23,7 +23,18 @@ public class WNode {
     public String toString() {
         return "V:" + id;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.id == ((WNode) obj).id;
+    }
+
+    @Override
+    public int compareTo(WNode o) {
+        return ((Integer) this.id).compareTo(o.id);
+    }
         
+    
     public int id;
     public String url;
 }

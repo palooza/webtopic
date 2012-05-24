@@ -40,7 +40,7 @@ public class CategoricalClusters {
                 clusterin = new Scanner(new BufferedReader(new FileReader(clustertableInfile)));
                 out = new PrintWriter(categoryProfileOutfile);
 
-                CategorizedURLs categorizedUrl = new CategorizedURLs(categorizedUrlInfile);
+                CategorizedURLs categorizedUrl = new CategorizedURLs(categorizedUrlInfile, false);
                 
                 while(clusterin.hasNextLine()){
                     String [] tokens = clusterin.nextLine().split("\t");
