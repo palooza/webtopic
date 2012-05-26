@@ -66,7 +66,7 @@ public class Cluster {
             if(urlToCategory.hasId(id)){
                 Category cat = urlToCategory.getCategory(id);
                 String catPattern = "[" + cat.first + ":" + cat.second + "]";
-                srcIdToUrl.put(id, catPattern + en.getKey());
+                srcIdToUrl.put(id, catPattern + en.getValue());
             }
         }
     }
