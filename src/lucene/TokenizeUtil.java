@@ -20,7 +20,7 @@ import org.apache.lucene.util.Version;
  * @author hoshun
  */
 public class TokenizeUtil {
-
+   
     public static Analyzer getMyAnalyzer() {
         String[] stoparr = {"a", "about", "above", "above", "across", "after", "afterwards", "again", "against", "all", "almost",
             "alone", "along", "already", "also", "although", "always", "am", "among", "amongst", "amoungst", "amount", "an", "and",
